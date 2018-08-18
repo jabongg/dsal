@@ -226,5 +226,36 @@ public class LinkedList {
 		
 		return head;
 	}
+	
+	/**
+	 * This method gets Nth node from the last.
+	 * 
+	 * geeksforgeeks must do coding section of linkedlist
+	 * @param head
+	 * @param n
+	 * @return
+	 */
+	public static int getNthFromLast(LinkedNode head, int n) {
+		// Your code here
+		LinkedNode p = head;
+		LinkedNode q = null;
+
+		for (int i = 1; i < n; i++) {
+			if (p != null) {
+				p = p.next;
+			} else {
+				return -1;
+			}
+		}
+
+		q = head; // start iterating from head
+
+		while (p.next != null) {
+			p = p.next;
+			q = q.next;
+		}
+
+		return q.data;
+	}
 }
 
