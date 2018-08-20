@@ -258,5 +258,123 @@ public class LinkedList {
 
 		return q.data;
 	}
+	
+	/**
+	 * merge two sorted linked list
+	 * @param headA
+	 * @param headB
+	 * @return the merged and sorted single list
+	 */
+	public static LinkedNode MergeLists(LinkedNode headA, LinkedNode headB) {
+		
+	     // This is a "method-only" submission. 
+	     // You only need to complete this method
+		
+		LinkedNode s = null;
+		LinkedNode p = headA;
+		LinkedNode q = headB;
+		LinkedNode mergedListHead = null;
+
+		
+		// check for boundary conditions 
+		if (p == null) {
+			return q;
+		}
+		
+		if (q == null) {
+			return p;
+		}
+		
+		if (p.data < q.data) {
+			s = p;
+			p = s.next;
+		} else {
+			s = q;
+			q = s.next;
+		}
+		mergedListHead = s; // to hold the head of the sorted list
+		
+		// loop till any of the list exhausts
+		while (p != null && q != null) {
+			if (p.data < q.data) {
+				s.next = p;
+				s = p;
+				p = s.next;
+			} else {
+				s.next = q;
+				s = q;
+				q = s.next;
+			}
+		}
+		
+		// once one of the lists is exhausted
+		if (p == null) {
+			s.next = q;
+		} 
+		
+		if (q == null) {
+			s.next = p;
+		}
+		
+		return mergedListHead;
+	     
+	   } 
+	
+	/**
+	 * This method returns the data at merging point of 
+	 * the two lists. This method does not deform the given lists 
+	 * @param headA
+	 * @param headB
+	 * @return merge point data
+	 */
+	public static int FindMergeNode(LinkedNode headA, LinkedNode headB) {
+		LinkedNode currentA = headA;
+		LinkedNode currentB = headB;
+
+	    //Do till the two nodes are the same
+	    while(currentA != currentB){
+	        //If you reached the end of one list start at the beginning of the other one
+	        //currentA
+	        if(currentA.next == null){
+	            currentA = headB;
+	        }else{
+	            currentA = currentA.next;
+	        }
+	        //currentB
+	        if(currentB.next == null){
+	            currentB = headA;
+	        }else{
+	            currentB = currentB.next;
+	        }
+	    }
+	    return currentB.data;
+	}
+	
+	/**
+	 * 	// intersection point of two lists
+	 * 
+	 * Note: this method is not recommended as it 
+	 * deforms the provided linked list
+	 * @param headA
+	 * @param headB
+	 * @return
+	 */
+	public static int intersectPoint(LinkedNode headA, LinkedNode headB) {
+		LinkedNode ptrA = headA;
+		LinkedNode ptrANext = ptrA.next;
+		LinkedNode ptrB = headB;
+		LinkedNode ptrBNext = ptrB.next;
+
+		while (ptrANext != null) {
+			ptrA.next = null;
+			ptrA = ptrANext;
+			ptrANext = ptrANext.next;
+		}
+		while (ptrB.next != null) {
+			ptrB = ptrB.next;
+		}
+		return ptrB.data;
+	}
+
 }
 
