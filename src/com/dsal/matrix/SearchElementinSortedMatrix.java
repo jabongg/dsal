@@ -1,6 +1,6 @@
 package com.dsal.matrix;
 
-public class Matrix {
+public class SearchElementinSortedMatrix {
 
 	public static void main(String[] args) {
 		int[][] A = { 
