@@ -1,5 +1,8 @@
 package com.dsal.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Tree {
 
 	/**
@@ -50,5 +53,50 @@ public class Tree {
 		}
 		treeLeftView(root.left, level + 1, maxLevel);
 		treeLeftView(root.right, level + 1, maxLevel);
+	}
+	
+	
+
+	
+	public static void treeRightView(BSTNode root, int level, int maxLevel) {
+		// if root is null, then set the level as 1
+		if (root == null) {
+			return;
+		} 
+		
+		if (level > maxLevel) {
+			System.out.print(root.data + " ");
+			maxLevel = level;
+		}
+
+		treeRightView(root.right, level + 1, maxLevel);
+		treeRightView(root.left, level + 1, maxLevel);
+	}
+	
+	/**
+	 * BFS Traversal of the tree
+	 * @param root
+	 */
+	public static void bfsTraversal(BSTNode root) {
+		        // base condition
+		        if (root == null) {
+		            return;
+		        }
+		        // let's have a queue to maintain nodes
+		        Queue<BSTNode> q = new LinkedList<>();
+		        if (root != null) {
+		            q.add(root);
+		        }
+		        
+		        while (!q.isEmpty()) {
+		            BSTNode curr = q.poll();
+		            if (curr != null) {
+			            q.add(curr.left);
+			            q.add(curr.right);
+			            
+			            System.out.print(curr.data + " ");
+		            }
+		        }
+		        
 	}
 }

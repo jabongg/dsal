@@ -18,39 +18,13 @@ public class TreeDriver {
         System.out.println("Inorder Traversal:");
         Tree.inorder(root); // prints tree elements
         System.out.println("\nPrinting left view of a tree:");
-        treeLeftView(root, 1);
+        Tree.treeLeftView(root, 1, 1);
         
-        System.out.println("\n Printing right view of a tree");
-        treeRightView(root, 1);
-	}
-	
-	public static void treeLeftView(BSTNode root, int level) {
-		// if root is null, then set the level as 1
-		if (root == null) {
-			return;
-		} 
-		
-		if (level > maxLevel) {
-			System.out.print(root.data + " ");
-			maxLevel = level;
-		}
-		treeLeftView(root.left, level + 1);
-		treeLeftView(root.right, level + 1);
-	}
-	
-	
-	public static void treeRightView(BSTNode root, int level) {
-		// if root is null, then set the level as 1
-		if (root == null) {
-			return;
-		} 
-		
-		if (level > maxLevel) {
-			System.out.print(root.data + " ");
-			maxLevel = level;
-		}
+        System.out.println("\nPrinting right view of a tree");
+        Tree.treeRightView(root, 1, 1);
+        
+        System.out.println("\n BFS traversal of the tree");
+        Tree.bfsTraversal(root);
+        }
 
-		treeRightView(root.right, level + 1);
-		treeRightView(root.left, level + 1);
-	}
 }

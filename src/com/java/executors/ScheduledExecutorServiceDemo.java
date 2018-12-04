@@ -1,6 +1,5 @@
 package com.java.executors;
 
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -36,8 +35,11 @@ public class ScheduledExecutorServiceDemo {
 		executorService.submit(task2);
 		executorService.submit(task3);
 		
-		executorService.schedule(task1, 10, TimeUnit.SECONDS);
-		executorService.shutdown();
+		executorService.schedule(task1, 4, TimeUnit.SECONDS);
+		
+		// for periodic execution.... we have remove the shutdown() method
+		executorService.scheduleAtFixedRate(task2, 0, 3, TimeUnit.SECONDS);
+		//executorService.shutdown();
 
 	}
 
