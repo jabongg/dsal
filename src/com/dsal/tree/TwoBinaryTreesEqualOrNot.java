@@ -25,6 +25,6 @@ public class TwoBinaryTreesEqualOrNot {
 		 *      
 		 */
 		
-		root1.da
+		//root1.da
 	}
 }
